@@ -5,21 +5,19 @@ export default function Navbar() {
   const [showModal, setShowModal] = useState(false);
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({ name: "", email: "", password: "" });
-  const [userName, setUserName] = useState(""); // store logged-in user
-  const [popupMsg, setPopupMsg] = useState(null); // floating popup message
+  const [userName, setUserName] = useState(""); 
+  const [popupMsg, setPopupMsg] = useState(null); 
 
-  // Handle input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Handle form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const url = isLogin
-        ? "http://localhost:5000/api/auth/login"
-        : "http://localhost:5000/api/auth/signup";
+        ? "https://gym-website-react.onrender.com/api/auth/login"
+        : "https://gym-website-react.onrender.com/api/auth/signup";
 
       const res = await fetch(url, {
         method: "POST",
@@ -30,23 +28,22 @@ export default function Navbar() {
       const data = await res.json();
 
       if (res.ok) {
-        // Set user name for navbar button
         setUserName(data.user ? data.user.name : formData.name);
 
-        // Clear form fields
+        
         setFormData({ name: "", email: "", password: "" });
 
-        // Show popup message
+        
         setPopupMsg(isLogin ? "🎉 Login Successful!" : "✅ Registration Successful!");
 
-        // Hide modal after short delay
+        
         setTimeout(() => {
           setShowModal(false);
           setPopupMsg(null);
         }, 1500);
 
       } else {
-        // Show error popup
+        
         setPopupMsg(`❌ ${data.message}`);
         setTimeout(() => setPopupMsg(null), 2000);
       }

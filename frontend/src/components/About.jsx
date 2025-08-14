@@ -1,6 +1,6 @@
 import React from "react";
 import "./About.css";
-import aboutImg from "../assets/about.jpg"; // Replace with your gym image
+import aboutImg from "../assets/about.jpg"; 
 
 const About = () => {
   return (

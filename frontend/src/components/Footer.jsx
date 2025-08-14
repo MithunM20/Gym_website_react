@@ -5,7 +5,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
-        {/* Left side - Gym name & tagline */}
+        
+        
         <div className="footer-about">
           <h2>Royal Fitness</h2>
           <p>Your journey to a stronger, healthier you starts here.</p>

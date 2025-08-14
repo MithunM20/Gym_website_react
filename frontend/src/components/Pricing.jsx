@@ -5,7 +5,7 @@ const Pricing = () => {
   const [plans, setPlans] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/pricing")
+    fetch("https://gym-website-react.onrender.com/api/pricing")
       .then((res) => res.json())
       .then((data) => setPlans(data))
       .catch((err) => console.error("Error fetching pricing:", err));
