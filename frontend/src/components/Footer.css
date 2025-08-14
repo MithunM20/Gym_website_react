@@ -1,0 +1,40 @@
+.footer {
+  background-color: #111; /* Dark theme to match gym look */
+  color: #fff;
+  padding: 40px 20px 10px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-about h2 {
+  color: #f5b301; /* Gold highlight */
+  margin-bottom: 10px;
+}
+
+.footer-contact h3,
+.footer-hours h3 {
+  color: #f5b301;
+  margin-bottom: 10px;
+}
+
+.footer-contact p,
+.footer-hours p,
+.footer-about p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.footer-bottom {
+  border-top: 1px solid #333;
+  text-align: center;
+  padding-top: 10px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: #aaa;
+}
