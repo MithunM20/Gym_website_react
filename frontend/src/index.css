@@ -1,12 +1,120 @@
-/* index.css */
+:root {
+  /* Color Palette */
+  --bg-obsidian: #0a0a0c;
+  --bg-card: #121216;
+  --bg-card-hover: #17171e;
+  --accent: #00e0b8;
+  --accent-rgb: 0, 224, 184;
+  --accent-glow: rgba(0, 224, 184, 0.15);
+  --accent-gradient: linear-gradient(135deg, #00e0b8 0%, #00b0ff 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #00ffcf 0%, #33bfff 100%);
+  
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a9;
+  --text-muted: #71717a;
+  
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-glow: rgba(0, 224, 184, 0.2);
+  
+  /* Typography */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Transitions */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  /* Shadows & Blurs */
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 20px rgba(0, 224, 184, 0.15);
+  --card-blur: blur(12px);
+}
+
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html {
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* offset for fixed navbar */
+}
+
+body {
   width: 100%;
-  overflow-x: hidden; /* prevents horizontal scroll */
-  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-obsidian);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-obsidian);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 5px;
+  border: 2px solid var(--bg-obsidian);
+  transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection Highlight */
+::selection {
+  background-color: rgba(var(--accent-rgb), 0.25);
+  color: var(--text-primary);
+}
+
+/* Common Section Container Styling */
+section {
+  position: relative;
+  padding: 100px 5% 80px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Common Headers */
+.section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.section-header h2 {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+}
+
+.section-header h2 span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-header p {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }

@@ -1,64 +1,179 @@
 .services-section {
-  background-color: #000;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-obsidian);
+  padding: 100px 0;
 }
 
-.services-header h2 {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.services-header h2 span {
-  color: #00e0b8;
-}
-
-.services-header p {
-  color: #ccc;
-  max-width: 600px;
-  margin: 10px auto 40px;
-  font-style: italic;
+.services-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
 .service-card {
-  background-color: #111;
-  padding: 25px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border: 1px solid #222;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
 }
 
-.service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 6px 20px rgba(0, 224, 184, 0.3);
+/* Image section container */
+.service-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
 }
 
-.service-card img {
-  max-width: 100%;
-  height: 180px;
+.service-image-wrapper img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 15px;
+  transition: transform var(--transition-slow);
+}
+
+.service-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 40%, rgba(18, 18, 22, 0.95) 100%);
+  pointer-events: none;
+}
+
+/* Card details info */
+.service-info {
+  padding: 28px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .service-card h3 {
-  color: #00e0b8;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  transition: color var(--transition-fast);
 }
 
 .service-card p {
+  font-family: var(--font-body);
   font-size: 0.95rem;
-  color: #bbb;
-  line-height: 1.5;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 18px;
+  margin-top: auto;
+}
+
+.learn-more-link {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--accent);
+  text-transform: uppercase;
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  transition: filter var(--transition-fast);
+}
+
+.learn-more-link::after {
+  content: ' →';
+  display: inline-block;
+  transition: transform var(--transition-fast);
+}
+
+/* Hover effects */
+.service-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 224, 184, 0.3);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 224, 184, 0.15);
+}
+
+.service-card:hover .service-image-wrapper img {
+  transform: scale(1.08);
+}
+
+.service-card:hover h3 {
+  color: var(--accent);
+}
+
+.service-card:hover .learn-more-link {
+  filter: brightness(1.2);
+}
+
+.service-card:hover .learn-more-link::after {
+  transform: translateX(4px);
+}
+
+/* Skeleton Loading Shimmer Styling */
+.skeleton-card {
+  padding: 8px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  pointer-events: none;
+}
+
+.skeleton-image {
+  width: 100%;
+  height: 204px;
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  border-radius: 14px;
+}
+
+.skeleton-title {
+  width: 60%;
+  height: 22px;
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+.skeleton-text {
+  height: 14px;
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@keyframes shimmerAnim {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive configurations */
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+    gap: 45px;
+  }
 }

@@ -1,40 +1,161 @@
 .footer {
-  background-color: #111; /* Dark theme to match gym look */
-  color: #fff;
-  padding: 40px 20px 10px;
+  background-color: #0b0b0e;
+  border-top: 1px solid var(--border-color);
+  padding: 80px 0 30px;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
 }
 
 .footer-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  width: 90%;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.3fr 0.8fr 1fr 0.9fr;
+  gap: 40px;
 }
 
+.footer-column h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* About Column */
 .footer-about h2 {
-  color: #f5b301; /* Gold highlight */
-  margin-bottom: 10px;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
 }
 
-.footer-contact h3,
-.footer-hours h3 {
-  color: #f5b301;
-  margin-bottom: 10px;
+.footer-about h2 span {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.footer-contact p,
-.footer-hours p,
-.footer-about p {
-  font-size: 14px;
-  margin: 5px 0;
+.footer-desc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 320px;
 }
 
+/* Social links icons */
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: transform var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.footer-socials a:hover {
+  transform: translateY(-3px);
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+  box-shadow: 0 0 15px rgba(0, 224, 184, 0.3);
+}
+
+/* Links lists */
+.footer-column ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-column ul li {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  line-height: 1.4;
+}
+
+.footer-links ul li a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footer-links ul li a:hover {
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+/* Contact / Hours elements details */
+.footer-icon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.day {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.time {
+  color: var(--text-secondary);
+}
+
+.text-highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Footer bottom bar */
 .footer-bottom {
-  border-top: 1px solid #333;
+  width: 90%;
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   text-align: center;
-  padding-top: 10px;
-  margin-top: 20px;
-  font-size: 13px;
-  color: #aaa;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Responsive configurations */
+@media (max-width: 1024px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .footer {
+    padding: 60px 0 30px;
+  }
+  .footer-bottom {
+    margin-top: 40px;
+  }
 }

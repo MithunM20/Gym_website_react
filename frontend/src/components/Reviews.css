@@ -1,62 +1,153 @@
 .reviews-section {
-  background-color: #000;
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  font-family: "Segoe UI", sans-serif;
+  background-color: var(--bg-obsidian);
+  padding: 100px 0;
+  position: relative;
 }
 
-.reviews-header h2 {
-  font-size: 2.5rem;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.reviews-header h2 span {
-  color: #00e0b8;
-}
-
-.reviews-header p {
-  color: #ccc;
-  max-width: 600px;
-  margin: 10px auto 40px;
-  font-style: italic;
+.reviews-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .reviews-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
+/* Card Styling */
 .review-card {
-  background-color: #111;
-  padding: 25px;
-  border-radius: 12px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  border: 1px solid #222;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 35px;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
 }
 
 .review-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0px 6px 20px rgba(0, 224, 184, 0.3);
+  transform: translateY(-6px);
+  border-color: rgba(0, 224, 184, 0.2);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(0, 224, 184, 0.08);
 }
 
-.review-card h3 {
-  color: #00e0b8;
-  font-size: 1.3rem;
-  margin-bottom: 10px;
+/* Quote Icon indicator */
+.quote-icon-wrapper {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.quote-icon {
+  color: var(--accent);
+  opacity: 0.35;
 }
 
 .review-text {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+
+/* Review Card Footer details */
+.review-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Avatar generator style */
+.reviewer-avatar {
+  width: 48px;
+  height: 48px;
+  background: rgba(0, 224, 184, 0.08);
+  border: 1px solid rgba(0, 224, 184, 0.2);
+  color: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
   font-size: 0.95rem;
-  color: #bbb;
-  line-height: 1.5;
-  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewer-info h3 {
+  font-family: var(--font-heading);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
 .review-rating {
-  color: #ffcc00;
-  font-size: 1.2rem;
+  display: flex;
+  gap: 2px;
+}
+
+.star-icon {
+  flex-shrink: 0;
+}
+
+/* Skeleton loader shimmers */
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-title {
+  height: 20px;
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  border-radius: 6px;
+}
+
+.skeleton-text {
+  height: 14px;
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+.skeleton-avatar {
+  background: linear-gradient(90deg, #181820 25%, #252530 50%, #181820 75%);
+  background-size: 200% 100%;
+  animation: shimmerAnim 1.5s infinite linear;
+  flex-shrink: 0;
+}
+
+@keyframes shimmerAnim {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Responsive configurations */
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    max-width: 450px;
+    margin: 0 auto;
+  }
 }
